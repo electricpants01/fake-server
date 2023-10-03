@@ -61,5 +61,7 @@ dependencies {
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    // chunk http interceptor
+//    implementation("com.readystatesoftware.chuck:library:1.1.0")
 
 }

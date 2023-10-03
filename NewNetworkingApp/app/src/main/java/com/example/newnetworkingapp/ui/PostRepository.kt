@@ -14,14 +14,29 @@ class PostRepository(
 
     suspend fun getAllPosts(): List<Post> {
         return withContext(Dispatchers.IO) {
-            println("chris first")
             val response = postService.getAllPosts()
-            println("chris response ${response.isSuccessful}")
             if (response.isSuccessful) {
                 response.body()!!
             } else { // something went wrong
                 emptyList()
             }
+        }
+    }
+
+    suspend fun getPost(postId: Int): Post {
+        return withContext(Dispatchers.IO) {
+            val response = postService.getPost(postId)
+            if (response.isSuccessful) {
+                response.body()!!
+            } else { // something went wrong
+                Post("", -1, "")
+            }
+        }
+    }
+
+    suspend fun createPost(post: Post) {
+        return withContext(Dispatchers.IO) {
+            postService.createPost(post)
         }
     }
 }

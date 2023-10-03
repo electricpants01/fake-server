@@ -9,17 +9,21 @@ import kotlinx.coroutines.launch
 
 class MainActivityViewModel : ViewModel() {
 
-    private val _myPost = MutableLiveData<List<Post>>()
-    val myPost: LiveData<List<Post>> = _myPost
+    private val _myPost = MutableLiveData<Post>()
+    val myPost: LiveData<Post> = _myPost
     private val postRepository = PostRepository()
 
 
     fun fetchAllPosts() {
         viewModelScope.launch {
-            println("chris go here")
-            val response = postRepository.getAllPosts()
-            println("chris response ${response.size}")
+            val response = postRepository.getPost(1)
             _myPost.value = response
+        }
+    }
+
+    fun createPost() {
+        viewModelScope.launch {
+            postRepository.createPost(Post("This is a new post", null, "New Post"))
         }
     }
 

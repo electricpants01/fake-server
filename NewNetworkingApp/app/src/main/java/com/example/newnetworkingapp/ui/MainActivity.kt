@@ -14,11 +14,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnFetchAllPosts.setOnClickListener {
-            mainActivityViewModel.fetchAllPosts()
+
+        binding.apply {
+            btnFetchAllPosts.setOnClickListener {
+                mainActivityViewModel.fetchAllPosts()
+            }
+
+            btnCreate.setOnClickListener {
+                mainActivityViewModel.createPost()
+            }
         }
         mainActivityViewModel.myPost.observe(this) { posts ->
-            binding.mainTextView.text = "your list has size: ${posts.size}"
+            binding.textView.text = posts.toString()
         }
+
+
     }
 }
