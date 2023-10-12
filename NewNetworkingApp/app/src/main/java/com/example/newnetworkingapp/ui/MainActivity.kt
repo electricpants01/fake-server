@@ -24,8 +24,15 @@ class MainActivity : AppCompatActivity() {
                 mainActivityViewModel.createPost()
             }
         }
-        mainActivityViewModel.myPost.observe(this) { posts ->
-            binding.textView.text = posts.toString()
+        mainActivityViewModel.homeEvent.observe(this) { homeEvent ->
+            when(homeEvent) {
+                is HomeEvent.PostSuccess -> {
+                    binding.textView.text = homeEvent.post.body.toString()
+                }
+                is HomeEvent.PostFailure -> {
+                    binding.textView.text = getString(homeEvent.message)
+                }
+            }
         }
 
 

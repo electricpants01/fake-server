@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    const val URL = "YOUR_MICROSOFT_AZURE_URL"
+    const val URL = "https://k8f36sc2-3000.brs.devtunnels.ms/"
 
     val client = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply {

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">NewNetworkingApp</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="user_error">You dont have permission to do this call</string>
+    <string name="network_error">Network Error</string>
 </resources>
